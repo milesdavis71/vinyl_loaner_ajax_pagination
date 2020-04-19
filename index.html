@@ -1,0 +1,56 @@
+<div class="grid-y medium-grid-frame">
+    <div class="cell shrink header medium-cell-block-container">
+        <h1>Grid Frame Header</h1>
+    </div>
+    <div class="cell medium-auto medium-cell-block-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell auto"></div>
+            <div class="cell small-12 large-8">
+                <table class="hover stack-for-small">
+                    <thead>
+                    <tr>
+                        <th align="center">Előadó</th>
+                        <th align="center">Album címe</th>
+                        <th align="center">Kiadás éve</th>
+                    </tr>
+                    </thead>
+                    <?php foreach ($results as $data) { ?>
+                    <tr>
+                        <td align="left"><?php echo $data['performer'] ?></td>
+                        <td align="left"><?php echo $data['title_of_record'] ?></td>
+                        <td align="left"><?php echo $data['release_date'] ?></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            </div>
+            <div class="cell auto"></div>
+        </div>
+        <div class="cell shrink footer">
+            <p>
+                Page <?php echo $pageNumber; ?> of <?php echo $pagesCount; ?>
+            </p>
+            <p>
+                <?php
+            for ($i = 1; $i <= $pagesCount; $i ++) {
+                if ($i == $pageNumber) {
+                    ?>
+                <a href="javascript:void(0);" class="current"><?php echo $i ?></a>
+                <?php
+                } else {
+                    ?>
+                <a href="javascript:void(0);" class="pages"
+                   onclick="showRecords('<?php echo $perPageCount;  ?>', '<?php echo $i; ?>');"><?php echo $i ?></a>
+                <?php
+                } // endIf
+            } // endFor
+
+            ?>
+            </p>
+
+        </div>
+    </div>
+
+
+
